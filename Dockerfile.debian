@@ -22,7 +22,8 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master
     rm ./get_helm.sh
 
 
-RUN echo $'alias ls="ls --color"\n\
+RUN echo '\n\
+alias ls="ls --color"\n\
 alias myip="curl ipinfo.io/ip"\n\
 alias grep="grep -i"\n\
 parse_git_branch() {\n\

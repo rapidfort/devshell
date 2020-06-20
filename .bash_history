@@ -77,3 +77,16 @@ ls -l
 mkdir x
 cd x
 ls
+source /etc/profile
+cd
+ls
+ls -l
+cd x
+ls
+ls -l
+cd /etc/
+ls
+cat profile
+exit
+source /etc/profile
+cat /etc/profile

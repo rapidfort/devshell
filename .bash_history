@@ -46,3 +46,34 @@ source /etc/profile
 ls
 cd
 ls -l
+ls
+source /etc/profile
+cd
+ls
+ls -l
+git branch
+  git rev-parse --abbrev-ref HEAD 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/ (\1)/"\n\
+  git rev-parse --abbrev-ref HEAD 
+  git rev-parse --abbrev-ref HEAD 2> /dev/null | sed -e "s/* \(.*\)/ (\1)/"\n\
+  git rev-parse --abbrev-ref HEAD 2> /dev/null | sed -e "s/* \(.*\)/ (\1)/"
+source /etc/pro
+source /etc/profile
+cd
+ls -l
+ls -l
+pwd
+cat /etc/profile
+parse_git_branch() {   git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/ ()/"; }
+parse_git_branch
+source /etc/profile
+cd
+ls -l
+source /etc/profile
+ls
+ls -l
+cd
+ls
+ls -l
+mkdir x
+cd x
+ls

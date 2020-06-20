@@ -8,11 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install pylint
-RUN echo $'alias ls="ls --color"\n\
-alias myip="curl ipinfo.io/ip"\n\
-alias grep="grep -i"\n\
-parse_git_branch() {\n\
-  git rev-parse --abbrev-ref HEAD 2> /dev/null | sed -e "s/* \(.*\)/ (\1)/"\n\
-}\n\
-PS1="\[\033[01;32m\]\$project \w \[\033[34m\]\$(parse_git_branch)\[\033[00m\]$ "'>> /etc/profile
+
+RUN mkdir -p /opt/rapidfort/aliases && git clone https://github.com/rapidfort/aliases.git /opt/rapidfort/aliases
+
 CMD bash

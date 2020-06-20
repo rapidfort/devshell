@@ -20,3 +20,14 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master
     chmod 700 get_helm.sh && \
     ./get_helm.sh && \
     rm ./get_helm.sh
+
+
+RUN echo $'alias ls="ls --color"\n\
+alias myip="curl ipinfo.io/ip"\n\
+alias grep="grep -i"\n\
+parse_git_branch() {\n\
+  git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/ (\1)/"\n\
+}\n\
+PS1="\[\033[01;32m\]\$project \w\[\033[34m\]\$(parse_git_branch)\[\033[00m\] $ "'>> /etc/profile
+
+CMD bash

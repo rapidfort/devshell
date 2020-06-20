@@ -16,11 +16,11 @@ export DOCKER_IMAGE_NAME=${PROJECT_ID}/alpshell
 docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.alpine .
 docker push ${DOCKER_IMAGE_NAME}:latest
 
-# export DOCKER_IMAGE_NAME=${PROJECT_ID}/debshell
-# docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.debian .
-# docker push ${DOCKER_IMAGE_NAME}:latest
+export DOCKER_IMAGE_NAME=${PROJECT_ID}/debshell
+docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.debian .
+docker push ${DOCKER_IMAGE_NAME}:latest
 
-# export DOCKER_IMAGE_NAME=${PROJECT_ID}/pyshell
-# docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.python .
-# docker push ${DOCKER_IMAGE_NAME}:latest
+export DOCKER_IMAGE_NAME=${PROJECT_ID}/pyshell
+docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.python .
+docker push ${DOCKER_IMAGE_NAME}:latest
 

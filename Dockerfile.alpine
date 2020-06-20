@@ -52,7 +52,6 @@ RUN apk --no-cache add \
     && rm glibc-bin-${GLIBC_VER}.apk \
     && rm -rf /var/cache/apk/*
 
-SHELL ["/bin/bash", "-c"]
 RUN echo $'alias ls="ls --color"\n\
 alias myip="curl ipinfo.io/ip"\n\
 alias grep="grep -i"\n\

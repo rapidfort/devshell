@@ -41,3 +41,8 @@ cdcd
 cd /
 ls
 ls -l
+ls
+source /etc/profile
+ls
+cd
+ls -l

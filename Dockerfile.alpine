@@ -1,4 +1,4 @@
-FROM alpinelinux/docker-cli
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
 # Add tools
 RUN apk add --update --no-cache &&  \
     apk add --update openssh ca-certificates curl bash jq git

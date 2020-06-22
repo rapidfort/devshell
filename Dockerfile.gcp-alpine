@@ -1,0 +1,31 @@
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
+# Add tools
+RUN apk add --update --no-cache &&  \
+    apk add --update openssh ca-certificates curl bash jq git
+
+# kubectl
+ENV KUBE_LATEST_VERSION="v1.18.2"
+RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+ && chmod +x /usr/local/bin/kubectl
+
+# Helm
+ENV HELM_VERSION="v3.2.0"
+ENV BASE_URL="https://get.helm.sh"
+ENV TAR_FILE="helm-${HELM_VERSION}-linux-amd64.tar.gz"
+RUN curl -L ${BASE_URL}/${TAR_FILE} |tar xvz && \
+    mv linux-amd64/helm /usr/bin/helm && \
+    chmod +x /usr/bin/helm && \
+    rm -rf linux-amd64
+
+#terraform
+ENV TERRAFORM_VERSION=0.12.26
+ENV TERRAFORM_URL="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+RUN curl -L ${TERRAFORM_URL} -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+    && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+    && mv terraform /usr/bin/terraform\
+    && chmod +x /usr/bin/terraform \
+    && rm -rf terraform*
+
+RUN mkdir -p /opt/rapidfort/aliases && git clone https://github.com/rapidfort/aliases.git /opt/rapidfort/aliases
+
+CMD bash

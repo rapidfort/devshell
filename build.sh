@@ -24,3 +24,7 @@ export DOCKER_IMAGE_NAME=${PROJECT_ID}/pyshell
 docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.python .
 docker push ${DOCKER_IMAGE_NAME}:latest
 
+export DOCKER_IMAGE_NAME=${PROJECT_ID}/gcp-platform
+docker build -t ${DOCKER_IMAGE_NAME}:${REVISION} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile.gcp-alpine .
+docker push ${DOCKER_IMAGE_NAME}:latest
+

@@ -1,15 +1,15 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
 # Add tools
 RUN apk add --update --no-cache &&  \
-    apk add --update openssh ca-certificates curl bash jq git
+    apk add --update openssh ca-certificates curl bash jq git alpine-sdk make
 
 # kubectl
-ENV KUBE_LATEST_VERSION="v1.18.2"
+ENV KUBE_LATEST_VERSION="v1.18.6"
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
 
 # Helm
-ENV HELM_VERSION="v3.2.0"
+ENV HELM_VERSION="v3.2.4"
 ENV BASE_URL="https://get.helm.sh"
 ENV TAR_FILE="helm-${HELM_VERSION}-linux-amd64.tar.gz"
 RUN curl -L ${BASE_URL}/${TAR_FILE} |tar xvz && \
@@ -18,13 +18,23 @@ RUN curl -L ${BASE_URL}/${TAR_FILE} |tar xvz && \
     rm -rf linux-amd64
 
 #terraform
-ENV TERRAFORM_VERSION=0.12.26
+ENV TERRAFORM_VERSION=0.12.29
 ENV TERRAFORM_URL="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
 RUN curl -L ${TERRAFORM_URL} -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && mv terraform /usr/bin/terraform\
     && chmod +x /usr/bin/terraform \
     && rm -rf terraform*
+
+
+#terragrunt
+ENV TERRAGRUNT_VERSION=v0.23.31
+ENV TERRAGRUNT_URL="https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64"
+RUN curl -L ${TERRAGRUNT_URL} -o terragrunt_linux_amd64_${TERRAGRUNT_VERSION} \
+    && mv terragrunt_linux_amd64_${TERRAGRUNT_VERSION} /usr/bin/terragrunt\
+    && chmod +x /usr/bin/terragrunt \
+    && rm -rf terragrunt*
+
 
 RUN mkdir -p /opt/rapidfort/aliases && git clone https://github.com/rapidfort/aliases.git /opt/rapidfort/aliases
 
